@@ -1,22 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
   <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
-  <primitive>false</primitive>  <analysisEngineMetaData>
+  <primitive>false</primitive>  
+  <delegateAnalysisEngineSpecifiers>
+    <delegateAnalysisEngine key="tokenAnnotatorDescriptor">
+      <import name="descriptors.tokenAnnotatorDescriptor"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="nGramAnnotatorDescriptor">
+      <import name="descriptors.nGramAnnotatorDescriptor"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="scoreAnnotatorDescriptor">
+      <import name="descriptors.scoreAnnotatorDescriptor"/>
+    </delegateAnalysisEngine>
+  </delegateAnalysisEngineSpecifiers>
+  <analysisEngineMetaData>
     <name>aaeDescriptor</name>
     <description>This is a template (empty) descriptor for your Aggerate Analysis Engine.  You will need to specify your type system and capabilities, in addition to your individual analysis engines.</description>
     <version>1.0</version>
     <vendor/>
-    <configurationParameters/>
-    <configurationParameterSettings/>
+    <configurationParameters searchStrategy="language_fallback">
+      <configurationParameter>
+        <name>N</name>
+        <description>Number of tokens per n-gram.</description>
+        <type>Integer</type>
+        <multiValued>false</multiValued>
+        <mandatory>false</mandatory>
+        <overrides>
+          <parameter>nGramAnnotatorDescriptor/N</parameter>
+        </overrides>
+      </configurationParameter>
+    </configurationParameters>
+    <configurationParameterSettings>
+      <nameValuePair>
+        <name>N</name>
+        <value>
+          <integer>3</integer>
+        </value>
+      </nameValuePair>
+    </configurationParameterSettings>
     <flowConstraints>
-      <fixedFlow/>
+      <fixedFlow>
+        <node>tokenAnnotatorDescriptor</node>
+        <node>nGramAnnotatorDescriptor</node>
+        <node>scoreAnnotatorDescriptor</node>
+      </fixedFlow>
     </flowConstraints>
     <typePriorities/>
     <fsIndexCollection/>
     <capabilities>
       <capability>
-        <inputs/>
-        <outputs/>
+        <inputs>
+          <type>type.Question</type>
+          <type>type.Passage</type>
+          <type>type.InputDocument</type>
+          <feature>type.Question:passages</feature>
+          <feature>type.Question:sentence</feature>
+          <feature>type.Question:id</feature>
+          <feature>type.Question:score</feature>
+          <feature>type.Question:end</feature>
+          <feature>type.Question:begin</feature>
+          <feature>type.Passage:question</feature>
+          <feature>type.Passage:sourceDocId</feature>
+          <feature>type.Passage:label</feature>
+          <feature>type.Passage:text</feature>
+          <feature>type.Passage:end</feature>
+          <feature>type.Passage:begin</feature>
+          <feature>type.InputDocument:questions</feature>
+          <feature>type.InputDocument:passages</feature>
+        </inputs>
+        <outputs>
+          <type allAnnotatorFeatures="true">Token</type>
+          <type allAnnotatorFeatures="true">NGram</type>
+          <feature>type.Question:ngrams</feature>
+          <feature>type.Question:tokens</feature>
+          <feature>type.Passage:tokens</feature>
+          <feature>type.Passage:originalText</feature>
+          <feature>type.Passage:score</feature>
+        </outputs>
         <languagesSupported/>
       </capability>
     </capabilities>

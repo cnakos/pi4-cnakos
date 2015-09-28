@@ -23,13 +23,42 @@
         </value>
       </nameValuePair>
     </configurationParameterSettings>
-    <typeSystemDescription/>
+    <typeSystemDescription>
+      <imports>
+        <import name="descriptors.typeSystem"/>
+      </imports>
+    </typeSystemDescription>
     <typePriorities/>
     <fsIndexCollection/>
     <capabilities>
       <capability>
         <inputs/>
-        <outputs/>
+        <outputs>
+          <type>type.Question</type>
+          <type>type.Passage</type>
+          <type>type.InputDocument</type>
+          <feature>type.Question:passages</feature>
+          <feature>type.Question:sentence</feature>
+          <feature>type.Question:id</feature>
+          <feature>type.Question:score</feature>
+          <feature>type.Question:componentId</feature>
+          <feature>type.Question:end</feature>
+          <feature>type.Question:begin</feature>
+          <feature>type.Passage:originalText</feature>
+          <feature>type.Passage:question</feature>
+          <feature>type.Passage:sourceDocId</feature>
+          <feature>type.Passage:label</feature>
+          <feature>type.Passage:text</feature>
+          <feature>type.Passage:componentId</feature>
+          <feature>type.Passage:end</feature>
+          <feature>type.Passage:begin</feature>
+          <feature>type.InputDocument:questions</feature>
+          <feature>type.InputDocument:passages</feature>
+          <feature>type.InputDocument:score</feature>
+          <feature>type.InputDocument:componentId</feature>
+          <feature>type.InputDocument:end</feature>
+          <feature>type.InputDocument:begin</feature>
+        </outputs>
         <languagesSupported/>
       </capability>
     </capabilities>

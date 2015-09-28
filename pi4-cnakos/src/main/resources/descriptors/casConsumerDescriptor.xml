@@ -19,7 +19,7 @@
       <nameValuePair>
         <name>OutputDir</name>
         <value>
-          <string>Y</string>
+          <string>src/main/resources/outputData</string>
         </value>
       </nameValuePair>
     </configurationParameterSettings>

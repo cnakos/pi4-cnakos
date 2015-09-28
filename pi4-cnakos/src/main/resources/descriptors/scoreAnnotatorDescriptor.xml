@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+  <primitive>true</primitive>  <annotatorImplementationName>ScoreAnnotator</annotatorImplementationName>
+  <analysisEngineMetaData>
+    <name>scoreAnnotatorDescriptor</name>
+    <description/>
+    <version>1.0</version>
+    <vendor/>
+    <configurationParameters/>
+    <configurationParameterSettings/>
+    <typeSystemDescription>
+      <imports>
+        <import name="descriptors.typeSystem"/>
+      </imports>
+    </typeSystemDescription>
+    <typePriorities/>
+    <fsIndexCollection/>
+    <capabilities>
+      <capability>
+        <inputs>
+          <type>type.Question</type>
+          <type>type.Passage</type>
+          <type allAnnotatorFeatures="true">NGram</type>
+          <feature>type.Question:ngrams</feature>
+          <feature>type.Passage:ngrams</feature>
+          </inputs>
+        <outputs>
+          <feature>type.Passage:score</feature>
+          <feature>type.Passage:componentId</feature>
+        </outputs>
+        <languagesSupported/>
+      </capability>
+    </capabilities>
+  <operationalProperties>
+      <modifiesCas>true</modifiesCas>
+      <multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+      <outputsNewCASes>false</outputsNewCASes>
+    </operationalProperties>
+  </analysisEngineMetaData>
+  <resourceManagerConfiguration/>
+</analysisEngineDescription>

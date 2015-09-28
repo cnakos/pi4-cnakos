@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+  <primitive>true</primitive>  <annotatorImplementationName>TokenAnnotator</annotatorImplementationName>
+  <analysisEngineMetaData>
+    <name>tokenAnnotatorDescriptor</name>
+    <description/>
+    <version>1.0</version>
+    <vendor/>
+    <configurationParameters/>
+    <configurationParameterSettings/>
+    <typeSystemDescription>
+      <imports>
+        <import name="descriptors.typeSystem"/>
+      </imports>
+    </typeSystemDescription>
+    <typePriorities/>
+    <fsIndexCollection/>
+    <capabilities>
+      <capability>
+        <inputs>
+          <type>type.Question</type>
+          <type>type.Passage</type>
+          <feature>type.Question:sentence</feature>
+          <feature>type.Question:end</feature>
+          <feature>type.Question:begin</feature>
+          <feature>type.Passage:text</feature>
+          <feature>type.Passage:end</feature>
+          <feature>type.Passage:begin</feature>
+          </inputs>
+        <outputs>
+          <type allAnnotatorFeatures="true">Token</type>
+          <feature>type.Question:tokens</feature>
+          <feature>type.Passage:tokens</feature>
+        </outputs>
+        <languagesSupported/>
+      </capability>
+    </capabilities>
+  <operationalProperties>
+      <modifiesCas>true</modifiesCas>
+      <multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+      <outputsNewCASes>false</outputsNewCASes>
+    </operationalProperties>
+  </analysisEngineMetaData>
+  <resourceManagerConfiguration/>
+</analysisEngineDescription>

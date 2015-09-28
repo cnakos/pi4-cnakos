@@ -63,6 +63,18 @@ You need to implement the types requried for your ranking model.</description>
           <rangeTypeName>uima.cas.FSList</rangeTypeName>
           <elementType>type.Passage</elementType>
         </featureDescription>
+      <featureDescription>
+          <name>tokens</name>
+          <description>The tokens in the Question's sentence.</description>
+          <rangeTypeName>uima.cas.FSList</rangeTypeName>
+          <elementType>Token</elementType>
+        </featureDescription>
+        <featureDescription>
+          <name>ngrams</name>
+          <description>The n-grams in the Question's sentence.</description>
+          <rangeTypeName>uima.cas.FSList</rangeTypeName>
+          <elementType>NGram</elementType>
+        </featureDescription>
       </features>
     </typeDescription>
     <typeDescription>
@@ -90,7 +102,54 @@ You need to implement the types requried for your ranking model.</description>
           <description>A question associated with this passage.</description>
           <rangeTypeName>type.Question</rangeTypeName>
         </featureDescription>
+      <featureDescription>
+          <name>originalText</name>
+          <description>The original text for the passage, before any cleaning occurred.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>tokens</name>
+          <description>The tokens in the Passage's text.</description>
+          <rangeTypeName>uima.cas.FSList</rangeTypeName>
+          <elementType>Token</elementType>
+        </featureDescription>
+        <featureDescription>
+          <name>ngrams</name>
+          <description>The n-grams in the Passage's text.</description>
+          <rangeTypeName>uima.cas.FSList</rangeTypeName>
+          <elementType>NGram</elementType>
+        </featureDescription>
       </features>
     </typeDescription>
-    </types>
+    <typeDescription>
+      <name>type.Token</name>
+      <description>Annotation pointing to a span of text containing one token.</description>
+      <supertypeName>type.ComponentAnnotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>text</name>
+          <description>The normalized text of the token.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>type.NGram</name>
+      <description>Annotation pointing to a span of text containing an n-gram.</description>
+      <supertypeName>type.ComponentAnnotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>n</name>
+          <description>The number of tokens in the n-gram.</description>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>tokens</name>
+          <description>The tokens in the n-gram.</description>
+          <rangeTypeName>uima.cas.FSList</rangeTypeName>
+          <elementType>Token</elementType>
+        </featureDescription>
+      </features>
+    </typeDescription>
+  </types>
 </typeSystemDescription>
